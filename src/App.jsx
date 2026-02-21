@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Login from "./Login";
 import CreateUser from "./CreateUser";
-import Dashboard from "./Dashboard";
+import Dashboard from "./dashboard";
 import DoctorLogin from "./doctorLogin";
 import MedicineInventory from "./medicineInventory";
 

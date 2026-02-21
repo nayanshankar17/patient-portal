@@ -56,12 +56,11 @@ function Login() {
             top: "85vh",
             right: "5vw",
             backgroundColor: "white",
-            color: "white",
             padding: "10px 20px",
             borderRadius: "8px",
             fontSize: "20px",
-            fontWeight: "250px",
-            color: "white"
+            fontWeight: 250,
+            color: "black"
           }}
           onMouseEnter={(e) => {
           e.currentTarget.style.boxShadow = "0 2px 4px rgba(0, 0, 0, 0.5)"
