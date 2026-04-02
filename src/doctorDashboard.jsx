@@ -66,7 +66,7 @@ function Dashboard() {
         <button onClick={() => {
             localStorage.removeItem("isLoggedIn");
             localStorage.removeItem("userPhone");
-            navigate("/");
+            navigate("/doctorlogin");
         }} style={{
                 width: "6vw",
                 height: "5vh",
