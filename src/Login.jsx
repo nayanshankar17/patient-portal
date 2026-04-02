@@ -19,10 +19,9 @@ function Login() {
     );
 
     if(!user){
-      setError("Invalid phone number, password, or role");
+      setError("Invalid phone number orpassword");
       setPhone(""); 
-      setPassword("");
-      setRole("");
+      setPassword("");  
     return;
     }
 
@@ -61,7 +60,6 @@ function Login() {
             borderRadius: "8px",
             fontSize: "20px",
             fontWeight: "250px",
-            color: "white"
           }}
           onMouseEnter={(e) => {
           e.currentTarget.style.boxShadow = "0 2px 4px rgba(0, 0, 0, 0.5)"

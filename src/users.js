@@ -13,6 +13,13 @@ export let users = [
     password: "anaavil123",
     role: "patient",
   },
+  {
+    id: 3,
+    name: "Dr. Anaavil Sharma",
+    phone: "9876543210",
+    password: "anaavil123",
+    role: "doctor",
+  },
 ];
 
 export const addUser = (newUser) => {

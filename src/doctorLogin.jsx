@@ -19,10 +19,9 @@ function Login() {
     );
 
     if(!user){
-      setError("Invalid phone number, password");
+      setError("Invalid phone number or password");
       setPhone(""); 
       setPassword("");
-      setRole("");
       return;
     }
 
@@ -30,8 +29,7 @@ function Login() {
     localStorage.setItem("isLoggedIn", "true"); // The user is currently logged in, even after refresh will stay on the same page
     localStorage.setItem("userPhone", phone); // This stores who is logged in.
 
-    // alert("Login successful (mock)");
-    navigate("/dashboard"); // works both for patient and doctor, but later will make different dashboards for doctor and patient, and will navigate accordingly
+    navigate("/doctorDashboard"); // different dashboards for doctor and patient, and will navigate accordingly
     setPhone(""); 
     setPassword("");
     setRole("");
@@ -105,23 +103,6 @@ function Login() {
             style={{ width: "93%", padding: "0.5rem", backgroundColor: "white", color: "black", borderRadius: "0.5rem"}}
           />
         </div>
-
-        {/* <div style={{ marginBottom: "1rem" }}>
-          <select
-            value={role}
-            onChange={(e) => setRole(e.target.value)}
-            style={{
-              width: "99%",
-              padding: "0.5rem",
-              marginBottom: "1rem",
-              backgroundColor: "white",
-              color: "black",
-            }}
-          >
-            <option value="patient">Patient</option>
-            <option value="doctor">Doctor</option>
-          </select>
-        </div> */}
 
         {error && (
           <p style={{ color: "red", fontSize: "0.9rem" }}>{error}</p>
