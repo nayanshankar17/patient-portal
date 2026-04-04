@@ -57,29 +57,43 @@ function medicineInventory() {
     // NO CART FUNCTIONALITY FOR DOCTOR, ONLY VIEWING THE MEDICINE INVENTORY
 
     return (
-        <div style={{width: "100vw", height: "100vh", backgroundColor: "white", padding: "0px", margin: "0px"}}>
+        <div style={{width: "100vw", minHeight: "100vh", background: "linear-gradient(135deg, #fff1f2 0%, #ffe4e6 100%)", fontFamily: "'Inter', 'Roboto', 'Segoe UI', sans-serif", padding: "0px", margin: "0px"}}>
             <div style ={
                 {width: "100vw", 
                 height: "10vh", 
-                backgroundColor: "#5395f8",
+                backgroundColor: "rgba(255, 255, 255, 0.95)",
+                backdropFilter: "blur(12px)",
+                WebkitBackdropFilter: "blur(12px)",
+                boxShadow: "0 4px 6px -1px rgba(0, 0, 0, 0.05)",
                 display: "flex",
                 flexDirection: "row",
-                alignItems: "center"
+                alignItems: "center",
+                justifyContent: "space-between",
+                padding: "0 5vw",
+                boxSizing: "border-box"
                 }}>
-                    <h2 style={{color: "black", marginLeft: "11vw"}}>Medicine Inventory</h2>
+                    <h2 style={{color: "#881337", fontSize: "1.5rem", fontWeight: "800", margin: 0}}>Medicine Inventory</h2>
                     
                     <button
                       style={{
-                        height: "5vh",
-                        marginLeft: "60vw",
-                        padding: "6px 12px"
+                        height: "6vh",
+                        padding: "0 1.5rem",
+                        borderRadius: "0.5rem",
+                        backgroundColor: "#f1f5f9",
+                        color: "#475569",
+                        fontWeight: "600",
+                        border: "none",
+                        cursor: "pointer",
+                        transition: "all 0.2s ease"
                       }}
                       onClick={() => navigate("/doctorDashboard")}
                       onMouseEnter={(e) => {
-                        e.currentTarget.style.boxShadow = "0 2px 4px rgba(0, 0, 0, 0.5)"
+                        e.currentTarget.style.backgroundColor = "#e2e8f0";
+                        e.currentTarget.style.color = "#0f172a";
                       }}
                       onMouseLeave={(e) => {
-                        e.currentTarget.style.boxShadow = "0 2px 4px rgba(0, 0, 0, 0)"
+                        e.currentTarget.style.backgroundColor = "#f1f5f9";
+                        e.currentTarget.style.color = "#475569";
                       }}
                         >Home
                     </button>
@@ -89,16 +103,19 @@ function medicineInventory() {
             <div
               style={{width: "80vw",
                       height: "8vh",
-                      borderBottom: "black 1px solid",
-                      backgroundColor: "white",
-                      color: "black",
-                      fontSize: "18px",
+                      borderBottom: "2px solid #e2e8f0",
+                      backgroundColor: "rgba(255, 255, 255, 0.6)",
+                      color: "#475569",
+                      fontSize: "0.875rem",
                       display: "flex",
                       flexDirection: "row",
                       marginLeft: "10vw",
+                      marginTop: "2vh",
                       textAlign: "center",
                       alignItems: "center",
-                      fontWeight: "bold"
+                      fontWeight: "700",
+                      letterSpacing: "0.05em",
+                      borderRadius: "12px 12px 0 0"
               }}
             >
               <p style={{width: "13.4vw"}}>S NO.</p>
@@ -129,35 +146,41 @@ function medicineInventory() {
                   display: "flex", 
                   justifyContent: "center", 
                   alignItems: "center", 
-                  gap: "10px",
+                  gap: "1rem",
                   marginTop: "20px"
                 }}>
                   
                   <button
                     disabled={currentPage === 1}
                     onClick={() => setCurrentPage(currentPage - 1)}
-                    style={{border: "none"}}
-                    onMouseEnter={(e) => {
-                      e.currentTarget.style.boxShadow = "0 2px 4px rgba(0, 0, 0, 0.5)"
-                    }}
-                    onMouseLeave={(e) => {
-                      e.currentTarget.style.boxShadow = "0 2px 4px rgba(0, 0, 0, 0)"
+                    style={{
+                      border: "none", 
+                      padding: "0.6rem 1.2rem", 
+                      borderRadius: "0.5rem", 
+                      backgroundColor: currentPage === 1 ? "#cbd5e1" : "white",
+                      color: currentPage === 1 ? "#94a3b8" : "#1e293b",
+                      fontWeight: "600",
+                      cursor: currentPage === 1 ? "not-allowed" : "pointer",
+                      boxShadow: "0 1px 3px rgba(0,0,0,0.1)"
                     }}
                   >
                     Prev
                   </button>
 
-                  <span>Page {currentPage} of {totalPages}</span>
+                  <span style={{fontWeight: "600", color: "#475569"}}>Page {currentPage} of {totalPages}</span>
 
                   <button
                     disabled={currentPage === totalPages}
                     onClick={() => setCurrentPage(currentPage + 1)}
-                    style={{border: "none"}}
-                    onMouseEnter={(e) => {
-                      e.currentTarget.style.boxShadow = "0 2px 4px rgba(0, 0, 0, 0.5)"
-                    }}
-                    onMouseLeave={(e) => {
-                      e.currentTarget.style.boxShadow = "0 2px 4px rgba(0, 0, 0, 0)"
+                    style={{
+                      border: "none", 
+                      padding: "0.6rem 1.2rem", 
+                      borderRadius: "0.5rem", 
+                      backgroundColor: currentPage === totalPages ? "#cbd5e1" : "white",
+                      color: currentPage === totalPages ? "#94a3b8" : "#1e293b",
+                      fontWeight: "600",
+                      cursor: currentPage === totalPages ? "not-allowed" : "pointer",
+                      boxShadow: "0 1px 3px rgba(0,0,0,0.1)"
                     }}
                   >
                     Next
@@ -173,24 +196,27 @@ function FeatureCard({ id, title, price, category, stock, manufacturer}) {  //no
   return (
     <div
       style={{width: "80vw",
-              height: "8vh",
-              borderBottom: "black 1px solid",
-              backgroundColor: "white",
-              color: "black",
-              fontSize: "18px",
+              minHeight: "8vh",
+              borderBottom: "1px solid #e2e8f0",
+              backgroundColor: "rgba(255, 255, 255, 0.9)",
+              color: "#1e293b",
+              fontSize: "1rem",
               display: "flex",
               flexDirection: "row",
               marginLeft: "10vw",
               textAlign: "center",
               alignItems: "center",
+              transition: "backgroundColor 0.2s ease"
       }}
+      onMouseEnter={(e) => e.currentTarget.style.backgroundColor = "white"}
+      onMouseLeave={(e) => e.currentTarget.style.backgroundColor = "rgba(255, 255, 255, 0.9)"}
     >
-      <p style={{width: "20vw"}}>{id}</p>
-      <p style={{width: "20vw"}}>{title}</p>
-      <p style={{width: "20vw"}}>{price}</p>
-      <p style={{width: "20vw"}}>{category}</p>
-      <p style={{width: "20vw"}}>{stock}</p>
-      <p style={{width: "20vw"}}>{manufacturer}</p>
+      <p style={{width: "13.4vw"}}>{id}</p>
+      <p style={{width: "13vw", fontWeight: "500"}}>{title}</p>
+      <p style={{width: "14vw", color: "#16a34a", fontWeight: "600"}}>₹{price}</p>
+      <p style={{width: "13vw"}}>{category}</p>
+      <p style={{width: "13vw"}}>{stock}</p>
+      <p style={{width: "13vw"}}>{manufacturer}</p>
       
     </div>
   );

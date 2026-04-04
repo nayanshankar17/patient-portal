@@ -43,81 +43,96 @@ function Login() {
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
-        fontFamily: "Arial, sans-serif",
-        backgroundColor: "#E6F4FF",
+        fontFamily: "'Inter', 'Roboto', 'Segoe UI', sans-serif",
+        background: "linear-gradient(135deg, #fff1f2 0%, #ffe4e6 100%)",
       }}
     >
       <div onClick={() => {
             navigate("/");
         }}style={{
             position: "fixed",
-            top: "85vh",
-            right: "5vw",
+            bottom: "40px",
+            right: "40px",
             backgroundColor: "white",
-            padding: "10px 20px",
-            borderRadius: "8px",
-            fontSize: "20px",
-            fontWeight: 250,
-            color: "black"
+            color: "#881337",
+            height: "64px",
+            width: "64px",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            borderRadius: "50%",
+            fontSize: "28px",
+            cursor: "pointer",
+            boxShadow: "0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)",
+            zIndex: 1000,
+            transition: "all 0.3s ease",
           }}
           onMouseEnter={(e) => {
-          e.currentTarget.style.boxShadow = "0 2px 4px rgba(0, 0, 0, 0.5)"
+          e.currentTarget.style.transform = "translateY(-4px)"
+          e.currentTarget.style.boxShadow = "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)"
           }}
           onMouseLeave={(e) => {
-          e.currentTarget.style.boxShadow = "0 2px 4px rgba(0, 0, 0, 0)"
+          e.currentTarget.style.transform = "translateY(0)"
+          e.currentTarget.style.boxShadow = "0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)"
         }}>
           👤
         </div>
       <form
         onSubmit={handleSubmit}
         style={{
-          padding: "2rem",
-          // border: "1px solid black",
-          borderRadius: "8px",
-          width: "320px",
-          backgroundColor: "white",
-          boxShadow: "0 8px 16px rgba(0,0,0,0.15)",
+          padding: "3rem 2.5rem",
+          borderRadius: "16px",
+          width: "360px",
+          backgroundColor: "rgba(255, 255, 255, 0.95)",
+          backdropFilter: "blur(12px)",
+          WebkitBackdropFilter: "blur(12px)",
+          border: "1px solid rgba(255, 255, 255, 0.6)",
+          boxShadow: "0 25px 50px -12px rgba(0,0,0,0.15)",
         }}
       >
-        <h2 style={{ textAlign: "center", color: "black"}}>MediConnect</h2>
+        <h2 style={{ textAlign: "center", color: "#881337", margin: "0 0 8px 0", fontSize: "1.875rem", fontWeight: "800", letterSpacing: "-0.025em"}}>MediConnect</h2>
 
-        <h3 style={{ textAlign: "center", color: "black", marginTop: "0px"}}>Staff Login</h3>
+        <h3 style={{ textAlign: "center", color: "#64748b", margin: "0 0 2.5rem 0", fontSize: "1.125rem", fontWeight: "500"}}>Staff Login</h3>
 
-        <div style={{ marginBottom: "1rem" }}>
+        <div style={{ marginBottom: "1.5rem" }}>
           <input
             type="text"
             placeholder="Phone Number"
             value={phone}
             onChange={(e) => setPhone(e.target.value)}
-            style={{ width: "93%", padding: "0.5rem", backgroundColor: "white", color: "black", borderRadius: "0.5rem" }}
+            style={{ width: "100%", boxSizing: "border-box", padding: "0.875rem 1.25rem", backgroundColor: "#f8fafc", color: "#0f172a", border: "1px solid #cbd5e1", borderRadius: "0.75rem", fontSize: "1rem", outline: "none", transition: "all 0.2s ease" }}
 
           />
         </div>
 
-        <div style={{ marginBottom: "1rem" }}>
+        <div style={{ marginBottom: "1.5rem" }}>
           <input
             type="password"
             placeholder="Password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            style={{ width: "93%", padding: "0.5rem", backgroundColor: "white", color: "black", borderRadius: "0.5rem"}}
+            style={{ width: "100%", boxSizing: "border-box", padding: "0.875rem 1.25rem", backgroundColor: "#f8fafc", color: "#0f172a", border: "1px solid #cbd5e1", borderRadius: "0.75rem", fontSize: "1rem", outline: "none", transition: "all 0.2s ease"}}
           />
         </div>
 
         {error && (
-          <p style={{ color: "red", fontSize: "0.9rem" }}>{error}</p>
+          <p style={{ color: "#ef4444", fontSize: "0.875rem", marginBottom: "1.5rem", marginTop: "-0.5rem", backgroundColor: "#fef2f2", padding: "0.75rem", borderRadius: "0.5rem", border: "1px solid #fecaca", textAlign: "center" }}>{error}</p>
         )}
 
         <button
           type="submit"
           style={{
-            width: "99%",
-            padding: "0.6rem",
-            backgroundColor: "#2563eb",
+            width: "100%",
+            padding: "0.875rem",
+            backgroundColor: "#e11d48",
             color: "white",
             border: "none",
-            borderRadius: "4px",
+            borderRadius: "0.75rem",
+            fontSize: "1rem",
+            fontWeight: "600",
             cursor: "pointer",
+            boxShadow: "0 4px 6px -1px rgba(225, 29, 72, 0.4)",
+            transition: "all 0.2s ease",
           }}
         >
           Login

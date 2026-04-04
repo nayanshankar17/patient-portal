@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { users } from "./users";
-import Bg from "./assets/bg.jpg";
+import Bg from "./assets/bg_modern.png";
 import "./index.css"; // imported for styling the date input in the appointments (both online and offline)
 
 function Dashboard() {
@@ -43,7 +43,8 @@ function Dashboard() {
     <div style={{
         minHeight: "100vh",
         width: "100vw",
-        backgroundColor: "white",
+        background: "linear-gradient(135deg, #fff1f2 0%, #ffe4e6 100%)",
+        fontFamily: "'Inter', 'Roboto', 'Segoe UI', sans-serif",
         display: "flex",
         flexDirection: "column",
     }}>
@@ -55,11 +56,15 @@ function Dashboard() {
         height: "10vh",
         display: "flex",
         flexDirection: "row",
-        backgroundColor: "white", 
-        boxShadow: "0 2px 4px rgba(0, 0, 0, 0.5)",
+        background: "linear-gradient(to right, rgba(255, 255, 255, 0.95), rgba(255, 241, 242, 0.95))", 
+        backdropFilter: "blur(12px)",
+        WebkitBackdropFilter: "blur(12px)",
+        borderBottom: "1px solid rgba(225, 29, 72, 0.1)",
+        boxShadow: "0 4px 20px -2px rgba(225, 29, 72, 0.05)",
         zIndex: 100,
+        alignItems: "center",
       }}>
-        <h2 style={{color: "black", width: "36vw", margin: "3vh 3vw 0 5vw"}}>Welcome to MediConnect, {userName ? `${userName}` : ""}</h2>
+        <h2 style={{color: "#881337", width: "36vw", margin: "0 3vw 0 5vw", fontSize: "1.5rem", fontWeight: "800"}}>Welcome to MediConnect, {userName ? `${userName}` : ""}</h2>
         <FeatureCard1 title="OPD Schedule" onClick={() => setShowOPD(true)} />
         <FeatureCard1 title="IPD Schedule" onClick={() => setShowIPD(true)} />
         <FeatureCard1 title="Medicine Inventory" onClick={() => navigate("/doctorMedicineInventory")} />
@@ -68,16 +73,24 @@ function Dashboard() {
             localStorage.removeItem("userPhone");
             navigate("/doctorlogin");
         }} style={{
-                width: "6vw",
-                height: "5vh",
-                margin: "2.5vh 0vw 0vh 2vw",
-                paddingTop: "0.5rem",
+                width: "8vw",
+                height: "6vh",
+                margin: "0 0 0 2vw",
+                borderRadius: "0.5rem",
+                backgroundColor: "#f1f5f9",
+                color: "#475569",
+                fontWeight: "600",
+                fontSize: "1rem",
                 border: "none",
+                cursor: "pointer",
+                transition: "all 0.2s ease",
         }} onMouseEnter={(e) => {
-          e.currentTarget.style.boxShadow = "0 2px 4px rgba(0, 0, 0, 0.5)"
+          e.currentTarget.style.backgroundColor = "#e2e8f0";
+          e.currentTarget.style.color = "#0f172a";
           }}
           onMouseLeave={(e) => {
-          e.currentTarget.style.boxShadow = "0 2px 4px rgba(0, 0, 0, 0)"
+          e.currentTarget.style.backgroundColor = "#f1f5f9";
+          e.currentTarget.style.color = "#475569";
         }}>
             Logout
         </button>
@@ -90,12 +103,10 @@ function Dashboard() {
       }}>
         <div style={{minHeight: "50vh", width: "100vw", position: "relative", }}>
            <div style={{minHeight: "45vh", width: "100vw",position: "absolute", backgroundImage: `url(${Bg})`,backgroundSize: "cover", backgroundPosition: "center",}}></div>
-           <div style={{minHeight: "10vh", width: "60vw",position: "absolute", backgroundColor: "white", margin: "40vh 0vw 0vh 20vw",border: "solid 1px black", display: "flex", flexDirection: "row", boxShadow: "2px 2px 4px rgba(0, 0, 0, 0.5)", zIndex: 100,}}>
-            <FeatureCard title="Emergency Appointments" onClick={() => setShowEmergency(true)} />
-            <div style={{minHeight: "10vh", width: "1px", backgroundColor: "black"}}></div>
-            <FeatureCard title="Apply Leave" onClick={() => setShowLeave(true)} />
-            <div style={{minHeight: "10vh", width: "1px", backgroundColor: "black"}}></div>
-            <FeatureCard title="Leave Status" onClick={() => setShowLeaveStatus(true)} />
+           <div style={{minHeight: "14vh", width: "60vw",position: "absolute", margin: "38vh 0vw 0vh 20vw", display: "flex", flexDirection: "row", justifyContent: "space-between", zIndex: 100}}>
+            <FeatureCard title="Emergency Appointments" onClick={() => setShowEmergency(true)} icon="🚨" />
+            <FeatureCard title="Apply Leave" onClick={() => setShowLeave(true)} icon="✍️" />
+            <FeatureCard title="Leave Status" onClick={() => setShowLeaveStatus(true)} icon="⏳" />
            </div>
         </div>
         <div style={{minHeight: "45vh", width: "100vw", display: "flex", flexDirection: "column", alignItems: "center"}}>
@@ -308,7 +319,7 @@ function Dashboard() {
               marginTop: "2vh",
               width: "40%",
               padding: "10px",
-              backgroundColor: "#5395f8",
+              backgroundColor: "#e11d48",
               color: "white",
               border: "none",
               borderRadius: "8px",
@@ -408,7 +419,7 @@ function Dashboard() {
 
           <button
             onClick={() => setShowLeaveStatus(false)}
-            style={{ marginTop: "10px", marginLeft:"7vw", width: "30%", padding: "8px", backgroundColor: "#5395f8", color: "white", border: "none", borderRadius: "4px" }}
+            style={{ marginTop: "10px", marginLeft:"7vw", width: "30%", padding: "8px", backgroundColor: "#e11d48", color: "white", border: "none", borderRadius: "4px" }}
             onMouseEnter={(e) => {
               e.currentTarget.style.boxShadow = "0 2px 4px rgba(0, 0, 0, 0.5)"
             }}
@@ -430,51 +441,78 @@ function FeatureCard1({ title, onClick }) {
   return (
         <div
           onClick={onClick}
-          style={{width: "15vw",
-                  height: "7vh", 
-                  border: "none",
-                  paddingTop: "0.5rem",
-                  marginTop: "1.5vh",
-                  backgroundColor: "white",
-                  color: "#5A5A5A",
-                  fontSize: "18px",
-                  cursor: "pointer",
+          style={{
+            width: "14vw",
+            height: "6vh", 
+            margin: "0 0.5vw",
+            borderRadius: "12px",
+            border: "1px solid transparent",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            backgroundColor: "transparent",
+            color: "#475569",
+            fontSize: "1rem",
+            fontWeight: "600",
+            cursor: "pointer",
+            transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
           }}
-          onMouseEnter={(e) => {e.currentTarget.style.color = "#5395f8"}}
-          onMouseLeave={(e) => {e.currentTarget.style.color = "#5A5A5A"}}
+          onMouseEnter={(e) => {
+            e.currentTarget.style.color = "#e11d48";
+            e.currentTarget.style.backgroundColor = "white";
+            e.currentTarget.style.transform = "translateY(-2px)";
+            e.currentTarget.style.boxShadow = "0 4px 12px -2px rgba(225, 29, 72, 0.1)";
+            e.currentTarget.style.border = "1px solid #ffe4e6";
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.color = "#475569";
+            e.currentTarget.style.backgroundColor = "transparent";
+            e.currentTarget.style.transform = "translateY(0)";
+            e.currentTarget.style.boxShadow = "none";
+            e.currentTarget.style.border = "1px solid transparent";
+          }}
         >
-          <h4 style={{ margin: "0.5rem 0", textAlign: "center"}}>{title}</h4>
+          <h4 style={{ margin: "0", textAlign: "center"}}>{title}</h4>
         </div>
   );
 }
 
-function FeatureCard({ title, onClick }) {
+function FeatureCard({ title, onClick, icon }) {
   return (
     <div
       onClick={onClick}
       style={{
-        width: "20vw",
-        Height: "10vh",
-        padding: "1.5rem",
-        backgroundColor: "white",
-        color: "#5A5A5A",
+        width: "18vw",
+        height: "14vh",
+        backgroundColor: "rgba(255, 255, 255, 0.95)",
+        backdropFilter: "blur(12px)",
+        WebkitBackdropFilter: "blur(12px)",
+        border: "1px solid rgba(255, 255, 255, 0.8)",
+        borderRadius: "16px",
+        color: "#0f172a",
         cursor: "pointer",
-        border: "none",
-        transition: "background-Color 0.5s ease, color 1s ease",
+        transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
         display: "flex",
-        flexDirection: "row",
-        justifyContent: "center"
+        flexDirection: "column",
+        justifyContent: "center",
+        alignItems: "center",
+        boxShadow: "0 10px 25px -5px rgba(0,0,0,0.1)",
       }}
       onMouseEnter={(e) => {
-        e.currentTarget.style.backgroundColor ="#5395f8";
-        e.currentTarget.style.color ="white";
+        e.currentTarget.style.transform = "translateY(-8px)";
+        e.currentTarget.style.boxShadow = "0 20px 40px -10px rgba(225, 29, 72, 0.25)";
+        e.currentTarget.style.backgroundColor ="#fff1f2";
+        e.currentTarget.style.color ="#e11d48";
       }}
       onMouseLeave={(e) => {
-        e.currentTarget.style.backgroundColor ="white";
-        e.currentTarget.style.color ="#5A5A5A";
+        e.currentTarget.style.transform = "translateY(0)";
+        e.currentTarget.style.boxShadow = "0 10px 25px -5px rgba(0,0,0,0.1)";
+        e.currentTarget.style.backgroundColor ="rgba(255, 255, 255, 0.95)";
+        e.currentTarget.style.color ="#0f172a";
       }}
     >
-      <h4 style={{ margin: "0.5rem 0", textAlign: "center"}}>{title}</h4>
+      <div style={{fontSize: "2rem", marginBottom: "8px"}}>{icon}</div>
+      <h4 style={{ margin: "0", textAlign: "center", fontSize: "1.1rem", fontWeight: "700"}}>{title}</h4>
     </div>
   );
 }
